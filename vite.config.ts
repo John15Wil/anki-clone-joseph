@@ -17,8 +17,8 @@ export default defineConfig({
         theme_color: '#111827',
         background_color: '#ffffff',
         display: 'standalone',
-        start_url: '/',
-        scope: '/',
+        start_url: '/anki-clone-joseph/',
+        scope: '/anki-clone-joseph/',
         orientation: 'portrait-primary',
         icons: [
           {
