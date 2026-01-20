@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/anki-clone/',
+  base: '/anki-clone-joseph/',
   plugins: [
     react(),
     VitePWA({
