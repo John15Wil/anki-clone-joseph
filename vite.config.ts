@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/anki-clone-joseph/',
+  base: '/',
   plugins: [
     react(),
     VitePWA({
@@ -17,8 +17,8 @@ export default defineConfig({
         theme_color: '#111827',
         background_color: '#ffffff',
         display: 'standalone',
-        start_url: '/anki-clone-joseph/',
-        scope: '/anki-clone-joseph/',
+        start_url: '/',
+        scope: '/',
         orientation: 'portrait-primary',
         icons: [
           {
