@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/anki-clone-joseph/sw.js', { scope: '/anki-clone-joseph/' })})}
