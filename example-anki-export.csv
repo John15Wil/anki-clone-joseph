@@ -1,0 +1,22 @@
+What is React?,A JavaScript library for building user interfaces,frontend javascript
+What is TypeScript?,A typed superset of JavaScript that compiles to plain JavaScript,frontend typescript
+What is Node.js?,JavaScript runtime built on Chrome's V8 JavaScript engine,backend javascript
+What is Express?,Fast and minimalist web framework for Node.js,backend framework
+What is MongoDB?,NoSQL document database,database
+What is REST API?,Representational State Transfer - architectural style for web services,api web
+What is GraphQL?,A query language for APIs and a runtime for executing queries,api modern
+What is Docker?,Platform for developing and running applications in containers,devops containers
+What is Git?,Distributed version control system,tools version-control
+What is CI/CD?,Continuous Integration and Continuous Deployment practices,devops automation
+"What is ""Agile""?","Iterative approach to software development emphasizing flexibility",methodology
+"What is the difference between
+let and var?","let has block scope, var has function scope
+let cannot be redeclared in the same scope",javascript basics
+What is a Promise?,Object representing eventual completion or failure of an async operation,javascript async
+What is async/await?,Syntactic sugar for working with Promises in a synchronous-like manner,javascript async
+What is JSX?,JavaScript XML - syntax extension for writing HTML-like code in JavaScript,react frontend
+What is a Component?,Reusable piece of UI in React that can have its own state and props,react frontend
+What is Redux?,State management library for JavaScript applications,react state-management
+What is Webpack?,Module bundler for JavaScript applications,tools build
+What is npm?,Node Package Manager - package manager for JavaScript,tools packages
+What is yarn?,Alternative package manager for JavaScript (faster than npm),tools packages

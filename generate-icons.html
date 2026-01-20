@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>生成 PWA 图标</title>
+  <style>
+    body { font-family: system-ui; padding: 20px; background: #f5f5f5; }
+    .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; }
+    canvas { border: 1px solid #ddd; margin: 10px 0; }
+    button { background: #3B82F6; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
+    button:hover { background: #2563EB; }
+    .preview { display: flex; gap: 20px; flex-wrap: wrap; }
+    .preview-item { text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📱 生成 PWA 图标</h1>
+    <p>点击下面的按钮下载 PWA 所需的图标文件</p>
+
+    <div class="preview">
+      <div class="preview-item">
+        <h3>192x192</h3>
+        <canvas id="canvas192" width="192" height="192"></canvas>
+        <br>
+        <button onclick="downloadCanvas('canvas192', 'pwa-192x192.png')">下载 192x192</button>
+      </div>
+
+      <div class="preview-item">
+        <h3>512x512</h3>
+        <canvas id="canvas512" width="512" height="512"></canvas>
+        <br>
+        <button onclick="downloadCanvas('canvas512', 'pwa-512x512.png')">下载 512x512</button>
+      </div>
+    </div>
+
+    <h2>使用说明</h2>
+    <ol>
+      <li>点击上面的按钮下载图标</li>
+      <li>将下载的 PNG 文件放到 <code>public/</code> 目录</li>
+      <li>重新构建项目: <code>npm run build</code></li>
+      <li>完成！</li>
+    </ol>
+  </div>
+
+  <script>
+    function drawIcon(canvas) {
+      const ctx = canvas.getContext('2d');
+      const size = canvas.width;
+      const scale = size / 512;
+
+      // Background
+      ctx.fillStyle = '#111827';
+      ctx.fillRect(0, 0, size, size);
+
+      // Card stack (shadow cards)
+      ctx.globalAlpha = 0.3;
+      ctx.fillStyle = '#374151';
+      roundRect(ctx, 130*scale, 160*scale, 250*scale, 170*scale, 20*scale);
+      ctx.fill();
+
+      ctx.globalAlpha = 0.5;
+      ctx.fillStyle = '#4B5563';
+      roundRect(ctx, 135*scale, 170*scale, 250*scale, 170*scale, 20*scale);
+      ctx.fill();
+
+      ctx.globalAlpha = 0.7;
+      ctx.fillStyle = '#6B7280';
+      roundRect(ctx, 140*scale, 180*scale, 250*scale, 170*scale, 20*scale);
+      ctx.fill();
+
+      // Main card
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = '#F9FAFB';
+      roundRect(ctx, 145*scale, 190*scale, 250*scale, 170*scale, 20*scale);
+      ctx.fill();
+
+      ctx.strokeStyle = '#E5E7EB';
+      ctx.lineWidth = 2*scale;
+      ctx.stroke();
+
+      // Card content lines
+      ctx.fillStyle = '#3B82F6';
+      roundRect(ctx, 170*scale, 220*scale, 130*scale, 10*scale, 5*scale);
+      ctx.fill();
+
+      ctx.fillStyle = '#9CA3AF';
+      roundRect(ctx, 170*scale, 245*scale, 190*scale, 8*scale, 4*scale);
+      ctx.fill();
+
+      roundRect(ctx, 170*scale, 265*scale, 170*scale, 8*scale, 4*scale);
+      ctx.fill();
+
+      roundRect(ctx, 170*scale, 285*scale, 150*scale, 8*scale, 4*scale);
+      ctx.fill();
+
+      // Brain emoji-style icon
+      ctx.fillStyle = '#10B981';
+      ctx.font = `bold ${80*scale}px Arial`;
+      ctx.fillText('🧠', 190*scale, 340*scale);
+
+      // Star
+      ctx.fillStyle = '#FBBF24';
+      ctx.font = `${60*scale}px Arial`;
+      ctx.fillText('⭐', 320*scale, 230*scale);
+    }
+
+    function roundRect(ctx, x, y, width, height, radius) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+    }
+
+    function downloadCanvas(canvasId, filename) {
+      const canvas = document.getElementById(canvasId);
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    // Draw icons on load
+    window.onload = () => {
+      drawIcon(document.getElementById('canvas192'));
+      drawIcon(document.getElementById('canvas512'));
+    };
+  </script>
+</body>
+</html>
